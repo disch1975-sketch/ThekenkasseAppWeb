@@ -1,0 +1,13 @@
+/* rotate90.css - wackelnde Rotation 90° links/rechts */
+@keyframes rotate90 {
+    0%   { transform: rotate(0deg); }
+    25%  { transform: rotate(-90deg); }
+    50%  { transform: rotate(0deg); }
+    75%  { transform: rotate(90deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.rotate90-icon {
+    animation: rotate90 3s infinite ease-in-out;
+    transform-origin: center;
+}
