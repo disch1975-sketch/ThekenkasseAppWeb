@@ -117,21 +117,6 @@ code {
 }
 
 
-/* Android Autokorrektur komplett deaktivieren */
-body {
-    -webkit-user-modify: read-only;
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* Text in der App nicht analysieren */
-#app {
-    user-select: none;
-    -webkit-user-select: none;
-}
 
 
-input, textarea {
-    user-select: text;
-    -webkit-user-select: text;
-    -webkit-user-modify: read-write;
-}
+
