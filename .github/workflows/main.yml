@@ -18,7 +18,7 @@ jobs:
           python-version: '3.x'
 
       - name: Abhängigkeiten installieren
-        run: pip install supabase
+       run: pip install supabase requests
 
       - name: Dartliga Tabellen hochladen
         env:
