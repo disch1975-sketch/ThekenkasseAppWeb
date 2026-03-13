@@ -9,9 +9,7 @@ supabase_key = os.environ["SUPABASE_KEY"]
 supabase = create_client(supabase_url, supabase_key)
 
 ligen = ["BK","A1","A2","B1","B2","B3","C1","C2"]
-
-# Maximal 30 Tage zurück prüfen
-max_tage_zurueck = 30
+max_tage_zurueck = 60
 
 for liga in ligen:
     gefunden = False
@@ -23,12 +21,21 @@ for liga in ligen:
         print("Prüfe:", url)
         r = requests.get(url)
         if r.status_code == 200:
-            # Bild speichern
+            # Bild lokal speichern
             with open(filename, "wb") as f:
                 f.write(r.content)
-            # Bild zu Supabase hochladen
+
+            # Alte Datei in Supabase löschen, falls vorhanden
+            try:
+                supabase.storage.from_("tabellen").remove([filename])
+                print("Altes Bild gelöscht:", filename)
+            except:
+                pass  # falls Datei noch nicht existiert
+
+            # Bild hochladen
             with open(filename, "rb") as f:
-                supabase.storage.from_("tabellen").upload(filename, f, upsert=True)
+                supabase.storage.from_("tabellen").upload(filename, f)
+            
             os.remove(filename)
             print("Hochgeladen:", filename)
             gefunden = True
