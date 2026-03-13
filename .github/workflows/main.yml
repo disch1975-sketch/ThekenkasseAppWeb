@@ -20,7 +20,7 @@ jobs:
       - name: Abhängigkeiten installieren
        run: pip install supabase requests
 
-      - name: Dartliga Tabellen hochladen
+      - name: Dartliga Tabellen hochladen 
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
