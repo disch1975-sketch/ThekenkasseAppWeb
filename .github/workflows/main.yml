@@ -2,25 +2,27 @@ name: Dartliga Tabellen Upload
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # täglich um 6 Uhr UTC
-  workflow_dispatch:     # manuelles Starten möglich
+    - cron: '0 6 * * *'
+  workflow_dispatch:
 
 jobs:
   upload:
     runs-on: ubuntu-latest
+
     steps:
       - name: Repository auschecken
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Python installieren
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
       - name: Abhängigkeiten installieren
-       run: pip install supabase requests
+        run: |
+          pip install supabase requests
 
-      - name: Dartliga Tabellen hochladen 
+      - name: Dartliga Tabellen hochladen
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
