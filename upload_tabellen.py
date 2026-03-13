@@ -28,7 +28,7 @@ for liga in ligen:
                 f.write(r.content)
             # Bild zu Supabase hochladen
             with open(filename, "rb") as f:
-                supabase.storage.from_("tabellen").upload(filename, f, {"upsert": True})
+                supabase.storage.from_("tabellen").upload(filename, f, upsert=True)
             os.remove(filename)
             print("Hochgeladen:", filename)
             gefunden = True
