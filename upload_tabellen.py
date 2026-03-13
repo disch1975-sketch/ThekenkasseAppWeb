@@ -3,12 +3,15 @@ from datetime import datetime, timedelta
 import os
 from supabase import create_client
 
-# Supabase Verbindung
+# Supabase Verbindung aus GitHub Secrets
 supabase_url = os.environ["SUPABASE_URL"]
-supabase_key = os.environ["SUPABASE_KEY"]
+supabase_key = os.environ["SUPABASE_KEY"]  # anon Key
 supabase = create_client(supabase_url, supabase_key)
 
+# Alle Ligen
 ligen = ["BK","A1","A2","B1","B2","B3","C1","C2"]
+
+# Maximal 30 Tage zurück prüfen
 max_tage_zurueck = 60
 
 for liga in ligen:
@@ -36,9 +39,11 @@ for liga in ligen:
             with open(filename, "rb") as f:
                 supabase.storage.from_("tabellen").upload(filename, f)
             
+            # Lokale Datei löschen
             os.remove(filename)
             print("Hochgeladen:", filename)
             gefunden = True
             break
+
     if not gefunden:
         print("Kein Bild gefunden für Liga:", liga)
