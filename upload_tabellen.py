@@ -6,56 +6,61 @@ from supabase import create_client
 # Supabase Verbindung
 supabase_url = os.environ["SUPABASE_URL"]
 supabase_key = os.environ["SUPABASE_KEY"]
+
 supabase = create_client(supabase_url, supabase_key)
 
-# Ligen
 ligen = ["BK","A1","A2","B1","B2","B3","C1","C2"]
 
-# Nur diese Wochentage prüfen
-gueltige_wochentage = [0,2]  # Montag, Mittwoch
-
-# Maximal 50 Tage zurück
 max_tage_zurueck = 50
 
+# vorhandene Dateien im Bucket laden
+try:
+    bucket_files = supabase.storage.from_("tabellen").list()
+    vorhandene_dateien = [f["name"] for f in bucket_files]
+except:
+    vorhandene_dateien = []
+
 for liga in ligen:
+
     gefunden = False
 
     for tage in range(max_tage_zurueck):
 
-        datum_obj = datetime.today() - timedelta(days=tage)
+        datum = (datetime.today() - timedelta(days=tage)).strftime("%d.%m.%Y")
 
-        # Nur bestimmte Wochentage prüfen
-        if datum_obj.weekday() not in gueltige_wochentage:
-            continue
-
-        datum = datum_obj.strftime("%d.%m.%Y")
         filename = f"{liga}-Tabelle-HP-{datum}.jpg"
+
         url = f"http://www.dartligafulda.de/wp-content/uploads/{filename}"
 
         print("Prüfe:", url)
 
-        r = requests.get(url)
+        r = requests.head(url)
 
         if r.status_code == 200:
 
+            if filename in vorhandene_dateien:
+                print("Schon vorhanden:", filename)
+                gefunden = True
+                break
+
+            # Bild speichern
             with open(filename, "wb") as f:
                 f.write(r.content)
 
-            try:
-                supabase.storage.from_("tabellen").remove([filename])
-                print("Altes Bild gelöscht:", filename)
-            except:
-                pass
-
+            # Upload
             with open(filename, "rb") as f:
-                supabase.storage.from_("tabellen").upload(filename, f)
+                supabase.storage.from_("tabellen").upload(
+                    filename,
+                    f,
+                    {"upsert": "true"}
+                )
 
             os.remove(filename)
 
-            print("Hochgeladen:", filename)
+            print("Neu hochgeladen:", filename)
 
             gefunden = True
             break
 
     if not gefunden:
-        print("Kein Bild gefunden für Liga:", liga)
+        print("Keine Tabelle gefunden für Liga:", liga)
