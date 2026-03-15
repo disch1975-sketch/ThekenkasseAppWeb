@@ -1,0 +1,85 @@
+﻿.flip-clock {
+    display: flex;
+    gap: 2px;
+    perspective: 1000px;
+    font-family: 'Courier New', monospace;
+}
+
+/* Jede Ziffer */
+.flip-digit {
+    position: relative;
+    width: 24px;
+    height: 36px;
+    background: #0b0b0b;
+    color: #00ff66;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+    /* Vorder- und Rückseite */
+    .flip-digit .front,
+    .flip-digit .back {
+        position: absolute;
+        width: 100%;
+        height: 50%;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        backface-visibility: hidden;
+        font-weight: bold;
+        font-size: 22px;
+    }
+
+    /* Obere Hälfte */
+    .flip-digit .front {
+        top: 0;
+        border-bottom: 1px solid #00ff66;
+    }
+
+    /* Untere Hälfte */
+    .flip-digit .back {
+        bottom: 0;
+        border-top: 1px solid #00ff66;
+        transform: rotateX(180deg);
+    }
+
+/* Flip Animation */
+@keyframes flip {
+    0% {
+        transform: rotateX(0deg);
+    }
+
+    50% {
+        transform: rotateX(-90deg);
+    }
+
+    100% {
+        transform: rotateX(-180deg);
+    }
+}
+
+.flip-digit.flip .front {
+    animation: flip 0.5s forwards;
+}
+
+/* Optional: Scrollbare Liste */
+.list-box {
+    max-height: 65vh;
+    overflow-y: auto;
+    border: 2px solid white;
+    border-radius: 6px;
+    padding: 5px;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.eintritt-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 2px solid white;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 8px;
+}
