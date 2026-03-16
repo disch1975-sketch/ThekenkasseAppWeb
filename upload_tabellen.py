@@ -34,33 +34,33 @@ for liga in ligen:
 
         print("Prüfe:", url)
 
-        r = requests.head(url)
+        r = requests.get(url)
 
-        if r.status_code == 200:
+if r.status_code == 200:
 
-            if filename in vorhandene_dateien:
-                print("Schon vorhanden:", filename)
-                gefunden = True
-                break
+    if filename in vorhandene_dateien:
+        print("Schon vorhanden:", filename)
+        gefunden = True
+        break
 
-            # Bild speichern
-            with open(filename, "wb") as f:
-                f.write(r.content)
+    # Bild speichern
+    with open(filename, "wb") as f:
+        f.write(r.content)
 
-            # Upload
-            with open(filename, "rb") as f:
-                supabase.storage.from_("tabellen").upload(
-                    filename,
-                    f,
-                    {"upsert": "true"}
-                )
+    # Upload
+    with open(filename, "rb") as f:
+        supabase.storage.from_("tabellen").upload(
+            filename,
+            f,
+            {"upsert": "true"}
+        )
 
-            os.remove(filename)
+    os.remove(filename)
 
-            print("Neu hochgeladen:", filename)
+    print("Neu hochgeladen:", filename)
 
-            gefunden = True
-            break
+    gefunden = True
+    break
 
     if not gefunden:
         print("Keine Tabelle gefunden für Liga:", liga)
