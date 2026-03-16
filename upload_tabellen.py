@@ -12,14 +12,14 @@ supabase = create_client(supabase_url, supabase_key)
 ligen = ["BK","A1","A2","B1","B2","B3","C1","C2"]
 max_tage_zurueck = 50
 
-# vorhandene Dateien im Bucket laden
 print("Lade vorhandene Dateien aus Supabase...")
 
+# vorhandene Dateien im Bucket laden
 try:
     bucket_files = supabase.storage.from_("tabellen").list()
     vorhandene_dateien = [f["name"] for f in bucket_files]
 except Exception as e:
-    print("Fehler beim Laden der Dateien:", e)
+    print("Fehler beim Laden:", e)
     vorhandene_dateien = []
 
 print("Gefundene Dateien:", len(vorhandene_dateien))
@@ -45,14 +45,20 @@ for liga in ligen:
         except:
             continue
 
+        # prüfen ob Bild existiert und nicht leer ist
         if r.status_code == 200 and len(r.content) > 1000:
 
-            if filename in vorhandene_dateien:
-                print("Schon vorhanden:", filename)
-                gefunden = True
-                break
-
             print("Download erfolgreich:", filename)
+
+            # alte Tabellen dieser Liga löschen
+            zu_loeschen = [f for f in vorhandene_dateien if f.startswith(liga)]
+
+            if zu_loeschen:
+                print("Lösche alte Tabellen:", zu_loeschen)
+                try:
+                    supabase.storage.from_("tabellen").remove(zu_loeschen)
+                except Exception as e:
+                    print("Fehler beim Löschen:", e)
 
             # Bild lokal speichern
             with open(filename, "wb") as f:
@@ -62,9 +68,9 @@ for liga in ligen:
             try:
                 with open(filename, "rb") as f:
                     supabase.storage.from_("tabellen").upload(
-                        filename,
-                        f,
-                        {
+                        path=filename,
+                        file=f,
+                        file_options={
                             "content-type": "image/jpeg",
                             "upsert": "true"
                         }
