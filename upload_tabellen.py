@@ -10,17 +10,24 @@ supabase_key = os.environ["SUPABASE_KEY"]
 supabase = create_client(supabase_url, supabase_key)
 
 ligen = ["BK","A1","A2","B1","B2","B3","C1","C2"]
-
 max_tage_zurueck = 50
 
 # vorhandene Dateien im Bucket laden
+print("Lade vorhandene Dateien aus Supabase...")
+
 try:
     bucket_files = supabase.storage.from_("tabellen").list()
     vorhandene_dateien = [f["name"] for f in bucket_files]
-except:
+except Exception as e:
+    print("Fehler beim Laden der Dateien:", e)
     vorhandene_dateien = []
 
+print("Gefundene Dateien:", len(vorhandene_dateien))
+
+
 for liga in ligen:
+
+    print("\n---- Prüfe Liga:", liga, "----")
 
     gefunden = False
 
@@ -29,38 +36,52 @@ for liga in ligen:
         datum = (datetime.today() - timedelta(days=tage)).strftime("%d.%m.%Y")
 
         filename = f"{liga}-Tabelle-HP-{datum}.jpg"
-
         url = f"http://www.dartligafulda.de/wp-content/uploads/{filename}"
 
         print("Prüfe:", url)
 
-        r = requests.get(url)
+        try:
+            r = requests.get(url, timeout=10)
+        except:
+            continue
 
-if r.status_code == 200:
+        if r.status_code == 200 and len(r.content) > 1000:
 
-    if filename in vorhandene_dateien:
-        print("Schon vorhanden:", filename)
-        gefunden = True
-        break
+            if filename in vorhandene_dateien:
+                print("Schon vorhanden:", filename)
+                gefunden = True
+                break
 
-    # Bild speichern
-    with open(filename, "wb") as f:
-        f.write(r.content)
+            print("Download erfolgreich:", filename)
 
-    # Upload
-    with open(filename, "rb") as f:
-        supabase.storage.from_("tabellen").upload(
-            filename,
-            f,
-            {"upsert": "true"}
-        )
+            # Bild lokal speichern
+            with open(filename, "wb") as f:
+                f.write(r.content)
 
-    os.remove(filename)
+            # Upload zu Supabase
+            try:
+                with open(filename, "rb") as f:
+                    supabase.storage.from_("tabellen").upload(
+                        filename,
+                        f,
+                        {
+                            "content-type": "image/jpeg",
+                            "upsert": "true"
+                        }
+                    )
 
-    print("Neu hochgeladen:", filename)
+                print("Neu hochgeladen:", filename)
 
-    gefunden = True
-    break
+            except Exception as e:
+                print("Upload Fehler:", e)
+
+            # lokale Datei löschen
+            os.remove(filename)
+
+            gefunden = True
+            break
 
     if not gefunden:
         print("Keine Tabelle gefunden für Liga:", liga)
+
+print("\nScript beendet.")
