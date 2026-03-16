@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "VD2AppWebTest",
   "resources": {
-    "hash": "sha256-IZlXGAzBpk7r0I087Wu3j1KlnZKucfHFRQSIHJoGZcA=",
+    "hash": "sha256-b0lJi8X13lO8GGuNHrKlKrEGpkBqMy4czNtxo4wSmuM=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-4g0GzvOXSwZvTLca4PrWJkoeltz+V9IF/hEFDcnVros="
     },
@@ -110,7 +110,7 @@
       "System.wasm": "sha256-YSihFa+YInKtLQNBZCK8pNPmas5a97BeIhBK9Cl2Qx8=",
       "netstandard.wasm": "sha256-MjYHLQ6ee9bjPrJqe7H6COtQAW52W9HQce75ChAvnIs=",
       "System.Private.CoreLib.wasm": "sha256-W9+rTek3HRuJMY0WEBQ3Q/6jEYuO4JZRMXn25NNhXC8=",
-      "VD2AppWebTest.wasm": "sha256-v3XN+7UIjOckgz/00xNPEUNQtDzIQLj63dgZg923rCQ="
+      "VD2AppWebTest.wasm": "sha256-h0L0o7HRqva/uNbAAC4kY5VZMHcZAiqT8KPDIenyNf4="
     }
   },
   "cacheBootResources": true,
