@@ -1,0 +1,49 @@
+.sterneblinken-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* verhindert Klick-Interferenzen */
+    overflow: hidden;
+    z-index: 9990; /* unterhalb Popup Overlay */
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) translateX(20px);
+        opacity: 0;
+    }
+}
+
+.sterneblinken.start {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    background: yellow;
+    clip-path: polygon( 50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35% );
+    animation-name: fall, blink;
+    animation-duration: var(--duration), 1.5s;
+    animation-delay: var(--delay);
+    animation-iteration-count: infinite;
+    animation-timing-function: linear, ease-in-out;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
