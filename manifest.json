@@ -1,8 +1,9 @@
 {
   "name": "VD2 Dart App",
   "short_name": "VD2",
-  "start_url": "/",
-  "display": "fullscreen",
+  "start_url": "/VD2AppWebTest/",
+  "scope": "/VD2AppWebTest/",
+  "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
   "icons": [
