@@ -1,6 +1,6 @@
 {
   "name": "VD2 Dart App",
-  "short_name": "VD2",
+  "short_name": "VD2 App",
   "start_url": "/VD2AppWebTest/",
   "scope": "/VD2AppWebTest/",
   "display": "standalone",
@@ -17,8 +17,14 @@
       "src": "images/appicon-512.png",
       "type": "image/png",
       "sizes": "512x512",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "images/appicon-512-maskable.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
     }
   ]
-  
+
 }
