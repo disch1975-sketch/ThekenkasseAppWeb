@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "VD2AppWebTest",
   "resources": {
-    "hash": "sha256-QxV8uGrV6/p6NhbOhovZMqxTTQ3IWjgo0ysWj4k/faM=",
+    "hash": "sha256-ivBb4Cmf8KjE2fIhF5rlWybWjkym6wOROF9NF+W0up8=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-4g0GzvOXSwZvTLca4PrWJkoeltz+V9IF/hEFDcnVros="
     },
@@ -22,7 +22,7 @@
       "Blazored.LocalStorage.wasm": "sha256-OaMAAd5n7ORfyur5e3QIyEVKJ76MKIvwbg7/icnnYcU=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-PNM0fc6hxy/Rk+V2u/g0twb2pzAeSg4kp/BOjXh0BeQ=",
       "Microsoft.AspNetCore.Components.Forms.wasm": "sha256-Bi5N0CFbx3QdHAhF32iYEvQ14TjhE5rxvU6Mn/sWgF4=",
-      "Microsoft.AspNetCore.Components.Web.wasm": "sha256-NrsqTSXbHYbCnFBBsCLcQ+RgX9hl32MppyKWfkahE48=",
+      "Microsoft.AspNetCore.Components.Web.wasm": "sha256-6IV3M5nxBMK/Bf3l6lYKV7hELGd1O3ws168wysUHiJg=",
       "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-AES27cESfoDjkCIe5A4UC/3BrjRtU3TaZjfTgUOeZgc=",
       "Microsoft.Extensions.Configuration.wasm": "sha256-od574rRtVVRJj+24jbl8j3GdQFpxlJOpSx+pEMw1Q18=",
       "Microsoft.Extensions.Configuration.Abstractions.wasm": "sha256-XR+WUfg8LtnrwdXFBnV+qO3ROyp6cYCfl1AZajIAheM=",
@@ -110,7 +110,7 @@
       "System.wasm": "sha256-YSihFa+YInKtLQNBZCK8pNPmas5a97BeIhBK9Cl2Qx8=",
       "netstandard.wasm": "sha256-MjYHLQ6ee9bjPrJqe7H6COtQAW52W9HQce75ChAvnIs=",
       "System.Private.CoreLib.wasm": "sha256-y2UfKZaVXDySlDMAY77EInntkmBSFp0BqXMVTE78Lfk=",
-      "VD2AppWebTest.wasm": "sha256-m+WmQcHxSuklfY7aYeeOuTktp5TRP9RhiT2bt0kX3as="
+      "VD2AppWebTest.wasm": "sha256-qEHFhvb8KhXCNHvOd2xJywAZJlIEL19EaAPBZzecTLM="
     }
   },
   "cacheBootResources": true,
