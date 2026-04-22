@@ -6,7 +6,6 @@
 
     <title>VD2AppWebTest</title>
 
-    <!-- Base-Href automatisch anpassen -->
     <base href="/" id="baseHref" />
 
     <link rel="manifest" href="manifest.json">
@@ -25,18 +24,15 @@
         })();
     </script>
 
-    <!-- Styles -->
     <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/app.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link href="./VD2AppWebTest.styles.css" rel="stylesheet" />
 
-    <!-- Animation CSS -->
     <link href="./css/Animation/rotate90.css" rel="stylesheet" />
     <link href="./css/Animation/sterneblinken.css" rel="stylesheet" />
     <link href="./css/Animation/zweimalblickrot.css" rel="stylesheet" />
 
-    <!-- 🔥 Fade-Out Animation -->
     <style>
         body {
             margin: 0;
@@ -50,62 +46,110 @@
             #loading-screen.fade-out {
                 opacity: 0;
             }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('images/carbon.png');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            padding-top: 10px;
+            color: white;
+            font-family: sans-serif;
+        }
+
+        .login-container {
+            width: 400px;
+            text-align: center;
+        }
+
+        .logo-frame {
+            background-color: white;
+            padding: 5px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .startpage-logo img {
+            width: 300px;
+            height: auto;
+            border-radius: 20px;
+        }
+
+        .loading-bar-container {
+            width: 220px;
+            height: 12px;
+            background: #444;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 10px auto;
+        }
+
+        .loading-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: greenyellow;
+            transition: width 0.2s;
+        }
+
+        .loading-percent {
+            margin-top: 5px;
+            font-size: 18px;
+        }
     </style>
 </head>
 
 <body>
-    <!-- Startscreen -->
+
     <div id="app">
-        <div id="loading-screen" style="
-            background: url('images/carbon.png');
-            background-size: cover;
-            width: 100vw;
-            height: 100vh;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            color:white;
-            font-family:sans-serif;
-        ">
-            <img src="images/vd2logo.png" style="width:220px; margin-bottom:20px;" />
+        <div id="loading-screen">
 
-            <div style="font-size:22px; margin-bottom:10px;">
-                App lädt…
-            </div>
+            <div class="background">
 
-            <div id="progressText" style="margin-bottom:10px; font-size:18px;">
-                0%
-            </div>
+                <div class="login-container">
 
-            <div style="
-                width:220px;
-                height:12px;
-                background:#444;
-                border-radius:6px;
-                overflow:hidden;">
-                <div id="progressBar" style="
-                    width:0%;
-                    height:100%;
-                    background:greenyellow;
-                    transition: width 0.2s;">
+                    <!-- LOGO (EXAKT wie Login) -->
+                    <div class="logo-frame startpage-logo">
+                        <img src="images/vd2logo.png" alt="Logo" />
+                    </div>
+
+                    <!-- Text -->
+                    <div style="font-size:22px; margin-bottom:10px;">
+                        App wird vorbereitet…
+                    </div>
+
+                    <!-- Prozent -->
+                    <div id="progressText" class="loading-percent">
+                        0%
+                    </div>
+
+                    <!-- Bar -->
+                    <div class="loading-bar-container">
+                        <div id="progressBar" class="loading-bar-fill"></div>
+                    </div>
+
                 </div>
+
             </div>
+
         </div>
     </div>
 
-    <!-- Fehler UI -->
     <div id="blazor-error-ui">
         An unhandled error has occurred.
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
 
-    <!-- Deine JS -->
     <script src="dartliga.js"></script>
     <script src="inactivity.js"></script>
 
-    <!-- 🔧 Lade-Logik -->
     <script>
         let progress = 0;
         let interval;
@@ -133,11 +177,8 @@
             updateProgress(100);
 
             const loader = document.getElementById("loading-screen");
-
-            // 👉 Fade-Out starten
             loader.classList.add("fade-out");
 
-            // 👉 danach komplett entfernen
             setTimeout(() => {
                 loader.style.display = "none";
             }, 400);
@@ -146,12 +187,12 @@
         startFakeLoading();
     </script>
 
-    <!-- Blazor -->
     <script src="./_framework/blazor.webassembly.js"></script>
     <script>
         Blazor.start().then(() => {
             finishLoading();
         });
     </script>
+
 </body>
 </html>
