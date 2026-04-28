@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "VD2AppWebTest",
   "resources": {
-    "hash": "sha256-IMmAdNgJJJD8G/A/KSEVdM55mtYUtdvL9dAhhILpP4U=",
+    "hash": "sha256-H0Npa4IS67+xIuQzByz6Xls6bLkhg5SkDl9tFoRDsR4=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-4g0GzvOXSwZvTLca4PrWJkoeltz+V9IF/hEFDcnVros="
     },
@@ -52,7 +52,7 @@
       "System.IdentityModel.Tokens.Jwt.wasm": "sha256-PO+x96C/PkZ0SBbU+a9mIaUKvAK79n200oqZ/t+TxrE=",
       "System.Reactive.wasm": "sha256-9ESjWFltiM7J7gpnx4O2r7QJnF8MPaHXbgBKdhrQLoI=",
       "Websocket.Client.wasm": "sha256-6BUeDh+wN+tE97n/xZ5FpCYyaVYitXH44JLzRcssrz8=",
-      "Microsoft.CSharp.wasm": "sha256-9Mal0SErN751xdNyfSwjl0+razkzoLwuMXkYR0qNByw=",
+      "Microsoft.CSharp.wasm": "sha256-v9Wvtz5z8X9nPAho0weYfqFchMkVSNhr1E20f7XO0HQ=",
       "System.Collections.Concurrent.wasm": "sha256-O6Odh7pZIAf3ycESSbEUqT534yKBGZPvnb/zvMtFHRE=",
       "System.Collections.NonGeneric.wasm": "sha256-OfzYnm9tgdOO+XAwAl8Yf2OI92GDEvuNTi9bNz0MLbc=",
       "System.Collections.Specialized.wasm": "sha256-RkZ1KIVCxBLaJOPkTlHcaw89ZVtmRvZ7zIEWer6j5xs=",
@@ -70,7 +70,7 @@
       "System.Drawing.wasm": "sha256-tdvM10cMIvD3sQv9uKQ46ZIh4FX2QTP2Ky7AINvHfKY=",
       "System.Formats.Asn1.wasm": "sha256-AlbrehMjniWOcyNjuNoGUbNOEaWt5bl/SsPCiiTKRHg=",
       "System.IO.Compression.wasm": "sha256-zC2jYJa5JkA9wDgyic3JJ0oy7cANmJsa3I75a6fGGlM=",
-      "System.Linq.Expressions.wasm": "sha256-J9QN40fTxxoopMEk5DUQjoNeMJkCPbuAcHxfmWO3uNU=",
+      "System.Linq.Expressions.wasm": "sha256-syJzepBxGS6jObZlabsySuhezJAx95mCcc3NXGu2qok=",
       "System.Linq.wasm": "sha256-9tY5VxwLJITvQhk/iVsvzeG9DRd32IXbdYRjlnA45bU=",
       "System.Memory.wasm": "sha256-Ktab2IQqYv2qNQkHl6Sfd4bMExguzLCmWvzKWZ877Vs=",
       "System.Net.Http.wasm": "sha256-AhWXnnriIPxkLOvdcy0v+rLNjeOWd1L0UdB/mHMjnK0=",
@@ -110,7 +110,7 @@
       "System.wasm": "sha256-YSihFa+YInKtLQNBZCK8pNPmas5a97BeIhBK9Cl2Qx8=",
       "netstandard.wasm": "sha256-MjYHLQ6ee9bjPrJqe7H6COtQAW52W9HQce75ChAvnIs=",
       "System.Private.CoreLib.wasm": "sha256-y2UfKZaVXDySlDMAY77EInntkmBSFp0BqXMVTE78Lfk=",
-      "VD2AppWebTest.wasm": "sha256-NE4jM1f8KYPi5Y+lT6r86cYNdXnyRab0Zsk4VHNf3rE="
+      "VD2AppWebTest.wasm": "sha256-akpcjE3jVg2lLPCIdB+JRsk77I4Jy/WSime+mSkKu6A="
     }
   },
   "cacheBootResources": true,
