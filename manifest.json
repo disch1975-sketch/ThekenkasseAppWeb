@@ -1,8 +1,8 @@
 {
-  "name": "VD2 Dart App",
-  "short_name": "VD2 App",
-  "start_url": "/VD2AppWebTest/",
-  "scope": "/VD2AppWebTest/",
+  "name": "ThekenkasseAppWeb",
+  "short_name": "Thekenkasse App",
+  "start_url": "/ThekenkasseAppWeb/",
+  "scope": "/ThekenkasseAppWeb/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
