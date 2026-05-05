@@ -108,28 +108,26 @@
 <body>
 
     <div id="app">
+
         <div id="loading-screen">
 
             <div class="background">
 
                 <div class="login-container">
 
-                    <!-- LOGO (EXAKT wie Login) -->
+                    <!-- LOGO -->
                     <div class="logo-frame startpage-logo">
                         <img src="images/thekenkasse_logo.png" alt="Logo" />
                     </div>
 
-                    <!-- Text -->
+                    <!-- TEXT -->
                     <div style="font-size:22px; margin-bottom:10px;">
                         App wird vorbereitet…
                     </div>
 
-                    <!-- Prozent -->
-                    <div id="progressText" class="loading-percent">
-                        0%
-                    </div>
+                    <!-- PROGRESS -->
+                    <div id="progressText" class="loading-percent">0%</div>
 
-                    <!-- Bar -->
                     <div class="loading-bar-container">
                         <div id="progressBar" class="loading-bar-fill"></div>
                     </div>
@@ -139,6 +137,7 @@
             </div>
 
         </div>
+
     </div>
 
     <div id="blazor-error-ui">
@@ -187,8 +186,49 @@
         startFakeLoading();
     </script>
 
-    <script src="./_framework/blazor.webassembly.js"></script>
+    <!-- ⌨️ GLOBAL KEYBOARD LISTENER (WICHTIG FÜR PIN) -->
     <script>
+        window.addGlobalKeyListener = function () {
+
+            document.addEventListener('keydown', function (e) {
+
+                // BACKSPACE
+                if (e.key === "Backspace") {
+                    DotNet.invokeMethodAsync(
+                        "ThekenkasseAppWeb",
+                        "HandleKeyFromJS",
+                        "BACK"
+                    );
+                    return;
+                }
+
+                // Zahlen
+                if (e.key >= "0" && e.key <= "9") {
+                    DotNet.invokeMethodAsync(
+                        "ThekenkasseAppWeb",
+                        "HandleKeyFromJS",
+                        e.key
+                    );
+                    return;
+                }
+
+                // ⭐ WICHTIG: Stern erlauben
+                if (e.key === "*") {
+                    DotNet.invokeMethodAsync(
+                        "ThekenkasseAppWeb",
+                        "HandleKeyFromJS",
+                        "*"
+                    );
+                    return;
+                }
+            });
+        };
+    </script>
+    <script src="./_framework/blazor.webassembly.js" autostart="false"></script>
+
+    <script>
+        startFakeLoading();
+
         Blazor.start().then(() => {
             finishLoading();
         });
