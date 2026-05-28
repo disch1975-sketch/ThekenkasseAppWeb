@@ -1,0 +1,201 @@
+﻿@media print {
+
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    /* =========================
+   HAUPT-CONTAINER
+   ========================= */
+
+    .kassenbericht-print-page {
+        position: relative;
+        width: 210mm;
+        min-height: 297mm;
+        padding: 18mm;
+        box-sizing: border-box;
+        background: white;
+        font-family: Arial, sans-serif;
+    }
+
+    /* =========================
+   TITEL ZENTRIERT
+   ========================= */
+
+    .kassenbericht-pdf-title {
+        
+        text-align: center;
+        font-size: 28px;
+        font-weight: 800;
+        margin-bottom: 6mm;
+        width: 100%;
+    }
+
+    /* =========================
+   HEADER
+   ========================= */
+
+    .kassenbericht-pdf-header {
+        width: 100%;
+        margin-bottom: 8mm;
+    }
+
+    .kassenbericht-header-line {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+        .kassenbericht-header-line h1 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+    .kassenbericht-right {
+        font-size: 14px;
+        font-weight: 600;
+        color: #555;
+        text-align: right;
+    }
+
+    /* =========================
+   CONTENT
+   ========================= */
+
+    .kassenbericht-content {
+        margin-top: 4mm;
+    }
+
+    .kassenbericht-event-block {
+        margin-bottom: 10px;
+    }
+
+    .kassenbericht-event-line {
+        display: flex;
+        gap: 6px;
+        align-items: baseline;
+    }
+
+    .kassenbericht-event-name {
+        font-size: 17px;
+        font-weight: 700;
+    }
+
+    .kassenbericht-event-comment {
+        margin-left: 57px;
+        font-size: 17px;
+        font-weight: 600;
+        color: #555;
+    }
+
+    /* =========================
+   TABLE
+   ========================= */
+
+    h2 {
+        font-size: 16px;
+        margin-top: 16px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 4px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 8px;
+    }
+
+    th, td {
+        border: 1px solid #ccc;
+        padding: 6px;
+        font-size: 11px;
+    }
+
+    th {
+        background: #f3f3f3;
+        text-align: left;
+    }
+
+
+    .kassenbericht-menge {
+        text-align: right;
+        padding-right: 24px;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .kassenbericht-liter {
+        text-align: right;
+        padding-right: 24px;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .total-row td {
+        font-weight: 700;
+        background: #f5f5f5;
+    }
+
+    table {
+        table-layout: fixed;
+    }
+
+        table th:nth-child(1),
+        table td:nth-child(1) {
+            width: 15mm;
+        }
+
+        table th:nth-child(2),
+        table td:nth-child(2) {
+            width: auto;
+        }
+
+        table th:nth-child(3),
+        table td:nth-child(3) {
+            width: 20mm;
+        }
+
+        table th:nth-child(4),
+        table td:nth-child(4) {
+            width: 25mm;
+        }
+
+        table th:nth-child(5),
+        table td:nth-child(5) {
+            width: 30mm;
+        }
+
+    /* =========================
+   UNTERSCHRIFT FIX (WICHTIG!)
+   ========================= */
+
+    .kassenbericht-signature-section {
+        position: absolute;
+        bottom: 22mm;
+        right: 25mm;
+        width: 70mm;
+        text-align: center;
+    }
+
+    .kassenbericht-signature-line {
+        border-bottom: 1px solid #000;
+        height: 18px;
+        width: 100%;
+    }
+
+    .kassenbericht-signature-text {
+        font-size: 12px;
+        margin-top: 4px;
+    }
+
+    /* =========================
+   FOOTER OPTIONAL
+   ========================= */
+
+    .kassenbericht-footer {
+        position: absolute;
+        bottom: 10mm;
+        left: 18mm;
+        font-size: 10px;
+        color: #666;
+    }
+}
