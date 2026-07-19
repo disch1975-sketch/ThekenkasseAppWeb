@@ -194,7 +194,15 @@
 
     <!-- ⌨️ GLOBAL KEYBOARD LISTENER (WICHTIG FÜR PIN) -->
     <script>
+        window.listenerRegistered = false;
+
         window.addGlobalKeyListener = function () {
+
+            // Nur einmal registrieren
+            if (window.listenerRegistered)
+                return;
+
+            window.listenerRegistered = true;
 
             document.addEventListener('keydown', function (e) {
 
@@ -218,14 +226,13 @@
                     return;
                 }
 
-                // ⭐ WICHTIG: Stern erlauben
+                // Stern
                 if (e.key === "*") {
                     DotNet.invokeMethodAsync(
                         "ThekenkasseAppWeb",
                         "HandleKeyFromJS",
                         "*"
                     );
-                    return;
                 }
             });
         };
