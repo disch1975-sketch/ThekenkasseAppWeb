@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <title>ThekenkasseAppWeb</title>
+    <title>TerminplanerAppWeb</title>
 
     <base href="/" id="baseHref" />
 
@@ -12,12 +12,13 @@
     <meta name="theme-color" content="#000000">
     <link rel="apple-touch-icon" href="images/appicon-192.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
 
     <script>
         (function () {
             var base = document.getElementById('baseHref');
             if (window.location.hostname.includes('github.io')) {
-                base.setAttribute('href', '/ThekenkasseAppWeb/');
+                base.setAttribute('href', '/Terminplaner/');
             } else {
                 base.setAttribute('href', '/');
             }
@@ -27,16 +28,23 @@
     <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/app.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
-    <link href="./ThekenkasseAppWeb.styles.css" rel="stylesheet" />
+    <link href="./TerminplanerAppWeb.styles.css" rel="stylesheet" />
 
     <link href="./css/Animation/rotate90.css" rel="stylesheet" />
     <link href="./css/Animation/sterneblinken.css" rel="stylesheet" />
     <link href="./css/Animation/zweimalblickrot.css" rel="stylesheet" />
-    <link href="css/kassenbericht.css?V=1" rel="stylesheet" />
-    <link href="css/getraenkeberichte.css?v=1" rel="stylesheet" />
-    <link href="css/vereinsbericht.css?v=1" rel="stylesheet" />
 
-    <script src="js/site.js"></script>
+
+    <link href="css/clubkasse_pdf.css?v=1" rel="stylesheet" />
+    <link href="css/thekenkasse_pdf.css?v=1" rel="stylesheet" />
+    <link href="css/automatenkasse_pdf.css?v=1" rel="stylesheet" />
+    <link href="css/mitgliederliste_pdf.css?v=1" rel="stylesheet" />
+    <link href="css/dartliga_anwesenheit_pdf.css?v=1" rel="stylesheet" />
+
+
+    <link href="css/getraenkeberichte.css?v=1" rel="stylesheet" />
+    <link href="css/kassenbericht.css?v=1" rel="stylesheet" />
+    <link href="css/vereinsbericht.css?v=1" rel="stylesheet" />
 
     <style>
         body {
@@ -113,26 +121,28 @@
 <body>
 
     <div id="app">
-
         <div id="loading-screen">
 
             <div class="background">
 
                 <div class="login-container">
 
-                    <!-- LOGO -->
+                    <!-- LOGO (EXAKT wie Login) -->
                     <div class="logo-frame startpage-logo">
-                        <img src="images/thekenkasse_logo.png" alt="Logo" />
+                        <img src="images/apptermine_logo.png" alt="Logo" />
                     </div>
 
-                    <!-- TEXT -->
+                    <!-- Text -->
                     <div style="font-size:22px; margin-bottom:10px;">
                         App wird vorbereitet…
                     </div>
 
-                    <!-- PROGRESS -->
-                    <div id="progressText" class="loading-percent">0%</div>
+                    <!-- Prozent -->
+                    <div id="progressText" class="loading-percent">
+                        0%
+                    </div>
 
+                    <!-- Bar -->
                     <div class="loading-bar-container">
                         <div id="progressBar" class="loading-bar-fill"></div>
                     </div>
@@ -142,7 +152,6 @@
             </div>
 
         </div>
-
     </div>
 
     <div id="blazor-error-ui">
@@ -151,9 +160,9 @@
         <a class="dismiss">🗙</a>
     </div>
 
-
+    <script src="dartliga.js"></script>
     <script src="inactivity.js"></script>
-    <script src="barcode.js"></script>
+    <script src="js/printHelper.js"></script>
 
     <script>
         let progress = 0;
@@ -192,59 +201,72 @@
         startFakeLoading();
     </script>
 
-    <!-- ⌨️ GLOBAL KEYBOARD LISTENER (WICHTIG FÜR PIN) -->
-    <script>
-        window.listenerRegistered = false;
-
-        window.addGlobalKeyListener = function () {
-
-            // Nur einmal registrieren
-            if (window.listenerRegistered)
-                return;
-
-            window.listenerRegistered = true;
-
-            document.addEventListener('keydown', function (e) {
-
-                // BACKSPACE
-                if (e.key === "Backspace") {
-                    DotNet.invokeMethodAsync(
-                        "ThekenkasseAppWeb",
-                        "HandleKeyFromJS",
-                        "BACK"
-                    );
-                    return;
-                }
-
-                // Zahlen
-                if (e.key >= "0" && e.key <= "9") {
-                    DotNet.invokeMethodAsync(
-                        "ThekenkasseAppWeb",
-                        "HandleKeyFromJS",
-                        e.key
-                    );
-                    return;
-                }
-
-                // Stern
-                if (e.key === "*") {
-                    DotNet.invokeMethodAsync(
-                        "ThekenkasseAppWeb",
-                        "HandleKeyFromJS",
-                        "*"
-                    );
-                }
-            });
-        };
-    </script>
     <script src="./_framework/blazor.webassembly.js" autostart="false"></script>
 
     <script>
-        startFakeLoading();
-
         Blazor.start().then(() => {
             finishLoading();
         });
+    </script>
+
+    <script>
+        window.printClubkasse = function () {
+            window.print();
+        };
+    </script>
+
+    <script>
+        window.printAutomatenkasse = function () {
+            window.print();
+        };
+    </script>
+
+    <script>
+        window.printThekenkasse = function () {
+            window.print();
+        };
+    </script>
+
+    <script>
+        window.printMitgliederliste = function () {
+            window.print();
+        };
+    </script>
+
+    <script>
+        window.printDartliga_Anwesenheit = function () {
+            window.print();
+        };
+    </script>
+
+
+
+    <script>
+        window.printGetraenkebericht = function () {
+            window.print();
+        };
+    </script>
+
+    <script>
+        window.printKassenbericht = function () {
+            window.print();
+        };
+    </script>
+
+    <script>
+        window.printVereinsbericht = function () {
+            window.print();
+        };
+    </script>
+
+    <script>
+        window.registerAfterPrint = function (dotNetRef) {
+
+            window.onafterprint = function () {
+                dotNetRef.invokeMethodAsync('OnAfterPrint');
+            };
+
+        };
     </script>
 
 </body>
