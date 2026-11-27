@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "ThekenkasseAppWeb",
   "resources": {
-    "hash": "sha256-QB/7egclCRgOMmqFFdMfn1OB6IWS+U3NkxpqEC++SOg=",
+    "hash": "sha256-ZzseDMdKwk3KZiZJKJV/PmHO99G7qi3RGd+J3nRuYVs=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-4g0GzvOXSwZvTLca4PrWJkoeltz+V9IF/hEFDcnVros="
     },
@@ -90,7 +90,7 @@
       "System.Runtime.Numerics.wasm": "sha256-H6QoN+MGdUcEuuErWVcsW+dlmsp3eAr5sX0EHIHY8Ok=",
       "System.Runtime.Serialization.Formatters.wasm": "sha256-3Vs8bJRwbxi00/Flutbq2sCnInQV4O1slJd/IOHGnJE=",
       "System.Runtime.Serialization.Primitives.wasm": "sha256-vfR8tVl/TFJygTWaAI8YkMplB23LxuzOLttgOsTI0d8=",
-      "System.Runtime.wasm": "sha256-2q5jZqzAMhOrpqW/teRvxbQ6MJ1gEorrJa5K5xIkriU=",
+      "System.Runtime.wasm": "sha256-4ZOQhHDvdWvM/4tuOm9YBImv5ePQvusqePyt9LWN8WE=",
       "System.Security.Claims.wasm": "sha256-G1NMuEj8eo1xZPpdEW5B+mnoW9ZP+JVJaXo1sE69wOM=",
       "System.Security.Cryptography.Algorithms.wasm": "sha256-e+uFngZ93zDs6cj1QtjLywsYid65pNctTd+y85O1u+c=",
       "System.Security.Cryptography.Primitives.wasm": "sha256-hH3ODG7vOQBFQvvcC7z8wj4Yb2lf/XY7WjXT7yxqsoY=",
@@ -108,8 +108,8 @@
       "System.Xml.XDocument.wasm": "sha256-Bzmlh+HxE91Gkn8oGeTPwJJhfsqs+vT4bGF29P+Uzbg=",
       "System.wasm": "sha256-YSihFa+YInKtLQNBZCK8pNPmas5a97BeIhBK9Cl2Qx8=",
       "netstandard.wasm": "sha256-MjYHLQ6ee9bjPrJqe7H6COtQAW52W9HQce75ChAvnIs=",
-      "System.Private.CoreLib.wasm": "sha256-hds95wR1VFeXEVXmCuZx+VOBroBZ2XQJ9hJjX5LlKY4=",
-      "ThekenkasseAppWeb.wasm": "sha256-JOlaBInwtqL1uRC8EokvbzI0dMCQPXbSizbMFF0U1Z4="
+      "System.Private.CoreLib.wasm": "sha256-nxTukIT6M7hg7vEb4KwTz8psFTzMOMiPBnMFtxG/1w8=",
+      "ThekenkasseAppWeb.wasm": "sha256-esmCNUYiWcDkrejMwhpufjmbFMpCGjDaG8zJ5BGXp9Y="
     }
   },
   "cacheBootResources": true,
