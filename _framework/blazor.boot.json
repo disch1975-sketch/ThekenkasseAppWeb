@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "ThekenkasseAppWeb",
   "resources": {
-    "hash": "sha256-WBJ9ZiJbDVWN6WHp86Pjct3DO/YP67HKBcUiQ9qRoi8=",
+    "hash": "sha256-FPcaoEwgrTF3DPobxqGsGtRHVmfeDI4nUGondCXJA4s=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-4g0GzvOXSwZvTLca4PrWJkoeltz+V9IF/hEFDcnVros="
     },
@@ -109,7 +109,7 @@
       "System.wasm": "sha256-YSihFa+YInKtLQNBZCK8pNPmas5a97BeIhBK9Cl2Qx8=",
       "netstandard.wasm": "sha256-MjYHLQ6ee9bjPrJqe7H6COtQAW52W9HQce75ChAvnIs=",
       "System.Private.CoreLib.wasm": "sha256-nxTukIT6M7hg7vEb4KwTz8psFTzMOMiPBnMFtxG/1w8=",
-      "ThekenkasseAppWeb.wasm": "sha256-SstbUZwAfzJmFWrnATnDwV2MX+HGJ5/yTXzqLLG/muw="
+      "ThekenkasseAppWeb.wasm": "sha256-MZoWyNWDqospQU8dO8NzDeAY3d+n1iBUQyY9Z//BR5Y="
     }
   },
   "cacheBootResources": true,
